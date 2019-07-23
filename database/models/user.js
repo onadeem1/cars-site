@@ -17,4 +17,11 @@ const User = db.define('user', {
   }
 })
 
+User.findOrCreateAndReturnId = async function(userObj) {
+  const newUser = await User.findOrCreate({
+    where: userObj
+  })
+  return newUser[0].id
+}
+
 module.exports = User
