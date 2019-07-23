@@ -1,0 +1,56 @@
+{
+  "name": "cars-site",
+  "version": "1.0.0",
+  "description": "server, form, admin",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint ./ --ignore-path .gitignore",
+    "lint-fix": "npm run lint -- --fix",
+    "precommit": "lint-staged",
+    "prettify": "prettier --write \"**/*.{js,jsx,json,css,scss,md}\"",
+    "start": "node server",
+    "start-server": "NODE_ENV='development' nodemon server -e html,js,scss --ignore public --ignore client",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "prettier --write",
+      "npm run lint-fix",
+      "git add"
+    ],
+    "*.{css,scss,json,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "keywords": [],
+  "author": "Omer Nadeem",
+  "license": "ISC",
+  "dependencies": {
+    "compression": "^1.7.3",
+    "connect-session-sequelize": "^4.1.0",
+    "express": "^4.16.3",
+    "express-session": "^1.15.1",
+    "morgan": "^1.8.1",
+    "nodemailer": "^6.3.0",
+    "passport": "^0.3.2",
+    "pg": "^6.1.2",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.38.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.2",
+    "chai": "^3.5.0",
+    "eslint": "^4.19.1",
+    "eslint-config-fullstack": "^5.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-react": "^7.7.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.2.0",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.3",
+    "npm-merge-driver": "^2.3.5",
+    "prettier": "1.11.1",
+    "supertest": "^3.1.0"
+  }
+}
