@@ -1,4 +1,4 @@
-const Request = require('./request')
+const Car = require('./car')
 const User = require('./user')
 
 /**
@@ -8,10 +8,10 @@ const User = require('./user')
  * instead of: const User = require('../db/models/user')
  */
 
-User.hasMany(Request)
-Request.belongsTo(User)
+User.hasMany(Car)
+Car.belongsTo(User)
 
 module.exports = {
-  Request,
+  Car,
   User
 }
