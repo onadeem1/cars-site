@@ -15,6 +15,7 @@ const createApp = () => {
   app.use(express.urlencoded({extended: true}))
   app.use(compression())
 
+  //api routes
   app.use('/api', require('./api'))
 
   // static file-serving middleware
@@ -29,6 +30,11 @@ const createApp = () => {
     } else {
       next()
     }
+  })
+
+  // sends index.html
+  app.use('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'public/index.html'))
   })
 
   // error handling endware
