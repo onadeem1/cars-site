@@ -1,4 +1,5 @@
 const isDev = process.env.NODE_ENV === 'development'
+var LiveReloadPlugin = require('webpack-livereload-plugin')
 
 module.exports = {
   mode: isDev ? 'development' : 'production',
@@ -17,6 +18,7 @@ module.exports = {
   watchOptions: {
     ignored: /node_modules/
   },
+  plugins: [new LiveReloadPlugin({appendScriptTag: true})],
   module: {
     rules: [
       {
