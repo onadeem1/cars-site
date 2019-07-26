@@ -1,0 +1,84 @@
+.car-form-page {
+  /* background: pink; */
+  height: 100vh;
+}
+
+form div {
+  margin: 0px;
+}
+
+.car-form-page-container {
+  margin: 0px 20%;
+  padding-top: 5%;
+}
+.text-container {
+  /* background: blue; */
+}
+.header-container {
+  text-align: center;
+}
+.detail-container {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.make-container {
+  /* background: red; */
+  padding: 10px;
+  display: flex;
+}
+.model-container {
+  /* background: green; */
+  padding: 10px;
+  display: flex;
+}
+.years-mileage-container {
+  display: flex;
+  /* background: orange; */
+  padding: 10px;
+}
+.years-container {
+  width: 33%;
+}
+.years-select {
+  display: flex;
+}
+.to-text {
+  padding: 5px 10px;
+  vertical-align: center;
+}
+.mileage-container {
+  margin-left: auto;
+  width: 33%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.budget-zip-container {
+  display: flex;
+  /* background: yellow; */
+  padding: 10px;
+}
+.budget-container {
+  width: 33%;
+}
+.budget-select {
+  display: flex;
+}
+.zip-container {
+  margin-left: auto;
+  width: 33%;
+  display: flex;
+  justify-content: flex-end;
+}
+.button-container {
+  /* background: blue; */
+  padding: 10px 0px;
+  display: flex;
+  justify-content: center;
+}
+
+.next-btn {
+  width: 90%;
+  border-radius: 5px;
+  padding: 10px;
+}
