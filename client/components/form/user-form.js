@@ -4,20 +4,28 @@ import {Formik, Form, Field} from 'formik'
 import * as Yup from 'yup'
 import {finalSubmit} from '../../store'
 import {withRouter} from 'react-router-dom'
+import carImage from '../../images/car-background.jpeg'
+import './css/user-form.css'
 
 const UserSchema = Yup.object().shape({
   name: Yup.string().required('Required'),
   email: Yup.string()
     .required('Required')
     .email('Email Format please :)'),
-  phoneNumber: Yup.string().required('Required')
+  phoneNumber: Yup.string().required('Required'),
+  zip: Yup.number()
+    .required('Required')
+    .test('len', 'Must be exactly 5 characters', val => {
+      if (val) return val.toString().length === 5
+    })
 })
 
 const UserForm = props => {
   const cars = props.cars
 
   return (
-    <div>
+    <div className="user-form-page">
+      <img className="car-background" src={carImage} />
       <Formik
         initialValues={{
           name: '',
@@ -30,17 +38,54 @@ const UserForm = props => {
           actions.resetForm()
         }}
       >
-        {({values, errors, handleChange}) => {
+        {({values}) => {
           let disabled = !UserSchema.isValidSync(values)
           return (
-            <Form>
-              <Field name="name" placeholder="Name" />
-              <Field name="email" placeholder="Email" />
-              <Field name="phoneNumber" placeholder="Phone Number" />
-              <button type="submit" disabled={disabled}>
-                Submit
-              </button>
-            </Form>
+            <div className="user-form-page-container">
+              <div className="user-header-container">
+                Where can we reach you?
+              </div>
+              <Form>
+                <div className="name-container">
+                  <Field
+                    className="form-control"
+                    name="name"
+                    placeholder="Name"
+                  />
+                </div>
+                <div className="email-container">
+                  <Field
+                    className="form-control"
+                    name="email"
+                    placeholder="Email"
+                  />
+                </div>
+                <div className="phone-container">
+                  <Field
+                    className="form-control"
+                    name="phoneNumber"
+                    placeholder="Phone Number"
+                  />
+                </div>
+                <div className="zip-container">
+                  <Field
+                    className="form-control"
+                    name="zip"
+                    placeholder="Zip Code"
+                  />
+                </div>
+
+                <div className="button-container">
+                  <button
+                    className="next-btn"
+                    type="submit"
+                    disabled={disabled}
+                  >
+                    Submit Request
+                  </button>
+                </div>
+              </Form>
+            </div>
           )
         }}
       </Formik>
@@ -50,7 +95,7 @@ const UserForm = props => {
 
 const mapState = state => {
   return {
-    cars: state.cars
+    cars: state.cars.cars
   }
 }
 
