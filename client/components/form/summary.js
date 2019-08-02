@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import carImage from '../../images/car-background.jpeg'
 import { selectCar, removeCar } from '../../store'
-import './css/summary.css'
+import '../styling/summary.scss'
 
 const Summary = props => {
   const handleClick = carKey => {

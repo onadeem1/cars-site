@@ -1,7 +1,7 @@
 import React from 'react'
 import carImage from '../../images/car-background.jpeg'
 import checkImage from '../../images/check-mark.png'
-import './css/thanks.css'
+import '../styling/thanks.scss'
 
 const App = () => (
   <div className="thanks-page">

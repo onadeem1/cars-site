@@ -12,7 +12,7 @@ import {
   generateKey
 } from './helper-files/helper-functions'
 import { CarSchema } from './helper-files/schemas'
-import './css/car-form.css'
+import '../styling/car-form.scss'
 
 const carBrands = Object.keys(carList)
 

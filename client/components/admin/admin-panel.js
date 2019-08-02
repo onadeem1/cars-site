@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import ReactTable from 'react-table'
 import matchSorter from 'match-sorter'
 import 'react-table/react-table.css'
-import './css/table.css'
+import '../styling/admin-panel.scss'
 
 const convertNumber = number => {
   let result = number.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')

@@ -5,7 +5,7 @@ import { finalSubmit } from '../../store'
 import { withRouter } from 'react-router-dom'
 import carImage from '../../images/car-background.jpeg'
 import { UserSchema } from './helper-files/schemas'
-import './css/user-form.css'
+import '../styling/user-form.scss'
 
 const UserForm = props => {
   const cars = props.cars
