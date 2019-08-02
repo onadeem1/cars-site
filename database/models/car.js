@@ -1,7 +1,14 @@
-const {STRING, INTEGER, BOOLEAN} = require('sequelize')
+const {STRING, INTEGER, BOOLEAN, DATE} = require('sequelize')
 const db = require('../db')
+const moment = require('moment')
 
 const Car = db.define('car', {
+  createdAt: {
+    type: DATE,
+    get() {
+      return moment(this.getDataValue('createdAt')).format('MM/DD/YY')
+    }
+  },
   make: {
     type: STRING,
     allowNull: false
@@ -29,11 +36,6 @@ const Car = db.define('car', {
   maxMileage: {
     type: INTEGER,
     allowNull: false
-  },
-  zip: {
-    type: INTEGER,
-    allowNull: false,
-    len: [0, 5]
   },
   open: {
     type: BOOLEAN,
