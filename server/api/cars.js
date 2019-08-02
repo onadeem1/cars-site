@@ -30,7 +30,7 @@ router.put('/:id', async (req, res, next) => {
       },
       returning: true
     })
-    res.json(updatedCar[1])
+    res.json(updatedCar[1][0])
   } catch (err) {
     next(err)
   }
