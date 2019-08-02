@@ -12,8 +12,13 @@ const User = db.define('user', {
     isEmail: true
   },
   phoneNumber: {
-    type: INTEGER,
+    type: STRING,
     allowNull: false
+  },
+  zip: {
+    type: INTEGER,
+    allowNull: false,
+    len: [0, 5]
   }
 })
 

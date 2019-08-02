@@ -1,6 +1,5 @@
 const nodemailer = require('nodemailer')
 
-//email setup
 const transporter = nodemailer.createTransport({
   host: 'smtp.gmail.com',
   port: 465,
@@ -21,12 +20,13 @@ const sendEmail = function(user, cars) {
       ${user.name}
       ${user.email}
       ${user.phoneNumber}
+      ${user.zip}
 Requested Car:
       ${car.make} ${car.model}
       year: ${car.minYear} - ${car.maxYear}
       budget: ${car.minBudget} - ${car.maxBudget}
       mileage: ${car.maxMileage} or less
-      zip: ${car.zip}`,
+      `,
       html: `<p>A new car request has been received from:&nbsp;</p>
       <p style="padding-left: 40px;">${user.name}</p>
       <p style="padding-left: 40px;">${user.email}</p>
