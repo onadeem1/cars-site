@@ -1,4 +1,5 @@
 import React from 'react'
+import history from '../../history'
 import checkImage from '../../images/check-mark.png'
 import '../styling/thanks.scss'
 
@@ -16,7 +17,11 @@ const App = () => (
         </div>
       </div>
       <div className="thanks-button-container">
-        <button className="red-btn" type="submit">
+        <button
+          className="red-btn"
+          onClick={() => history.push('/')}
+          type="button"
+        >
           Thank You!
         </button>
       </div>
