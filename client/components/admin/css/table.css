@@ -1,0 +1,147 @@
+.page-container {
+  position: relative;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  max-width: 400px;
+  padding-top: 50px;
+}
+
+.login-button-container {
+  margin-top: 50px;
+}
+
+.logout-btn {
+  max-width: 150px;
+  text-decoration: none;
+}
+
+.logout-link {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  text-decoration: none !important;
+}
+
+.error-box {
+  color: #e44857;
+  margin-top: 25px;
+}
+
+.logout-container {
+  justify-content: flex-end;
+  margin-right: 10px;
+}
+
+.loading {
+  width: 100vw;
+  height: 100vh;
+  background: #f0f0f0;
+  color: #9a8d90;
+  font-size: 50px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-text {
+  padding: auto;
+}
+
+.car-background {
+  position: absolute;
+  z-index: -1;
+  opacity: 0.07;
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+}
+
+.box {
+  flex: 1;
+  display: flex;
+}
+
+.top-row-container {
+  margin: 0px 3%;
+  padding: 35px 0px;
+  display: flex;
+}
+
+.title-container {
+  justify-content: center;
+  align-items: flex-end;
+  font-size: 28px;
+  font-weight: 500;
+}
+
+.search-admin {
+  max-width: 55%;
+}
+
+.table-container {
+  margin: 0px 3%;
+  padding-top: 3%;
+}
+
+.ReactTable {
+  border: 0px;
+}
+
+.rt-tr-group {
+  border-bottom: 0px !important;
+  text-align: center;
+}
+
+.ReactTable .rt-tbody .rt-td {
+  border-right: 0px;
+}
+
+.rt-tr {
+  align-items: center;
+}
+
+.rt-thead {
+  font-weight: 500;
+}
+
+.Open {
+  color: #49e36c;
+  border: 1.5px solid #49e36c;
+}
+
+.Closed {
+  color: #e44857;
+  border: 1.5px solid #e44857;
+}
+
+.Open,
+.Closed {
+  background: transparent;
+  border-radius: 5px;
+  padding: 7px 10px;
+  font-size: 12px;
+  min-width: 75px;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-out;
+}
+
+.Open:active,
+.Open:focus {
+  outline: none;
+}
+
+.Closed:active,
+.Closed:focus {
+  outline: none;
+}
+
+.Open:hover,
+.Closed:hover {
+  box-shadow: 2px 4px 5px #9a8d90;
+  font-weight: 400;
+}
