@@ -1,7 +1,7 @@
 /* eslint-disable react/display-name */
-import React, {useEffect, useState} from 'react'
-import {loadWishList, updateWishList, logout} from '../../store'
-import {connect} from 'react-redux'
+import React, { useEffect, useState } from 'react'
+import { loadWishList, updateWishList, logout } from '../../store'
+import { connect } from 'react-redux'
 import ReactTable from 'react-table'
 import matchSorter from 'match-sorter'
 import 'react-table/react-table.css'
@@ -36,9 +36,9 @@ const Admin = props => {
           <>
             <div>{cellProps.value.name}</div>
             <a href={`mailto:${cellProps.value.email}`}>
-              <div style={{fontSize: '12px'}}>e: {cellProps.value.email}</div>
+              <div style={{ fontSize: '12px' }}>e: {cellProps.value.email}</div>
             </a>
-            <div style={{fontSize: '12px'}}>
+            <div style={{ fontSize: '12px' }}>
               ph: {cellProps.value.phoneNumber}
             </div>
           </>
@@ -134,7 +134,7 @@ const Admin = props => {
         <ReactTable
           data={data}
           columns={columns}
-          defaultSorted={[{id: 'createdAt', desc: true}]}
+          defaultSorted={[{ id: 'createdAt', desc: true }]}
         />
       </div>
     </div>
@@ -147,6 +147,6 @@ const mapState = state => {
   }
 }
 
-const mapDispatch = {loadWishList, updateWishList, logout}
+const mapDispatch = { loadWishList, updateWishList, logout }
 
 export default connect(mapState, mapDispatch)(Admin)

@@ -18,7 +18,7 @@ module.exports = {
   watchOptions: {
     ignored: /node_modules/
   },
-  plugins: [new LiveReloadPlugin({appendScriptTag: true})],
+  plugins: [new LiveReloadPlugin({ appendScriptTag: true })],
   module: {
     rules: [
       {

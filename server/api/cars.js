@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {Car, User} = require('../../database/models')
+const { Car, User } = require('../../database/models')
 const sendEmail = require('../email-helper')
 module.exports = router
 
@@ -12,7 +12,7 @@ router.get('/', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
-    const {user, cars} = req.body
+    const { user, cars } = req.body
     const userId = await User.findOrCreateAndReturnId(user)
     const createdCars = await Car.createMultiple(cars, userId)
     res.status(201).json(createdCars)

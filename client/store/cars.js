@@ -8,18 +8,18 @@ const UPDATE_CAR = 'UPDATE_CAR'
 const REMOVE_CAR = 'REMOVE_CAR'
 
 /* Action Creators */
-export const addCar = car => ({type: ADD_CAR, car})
-export const selectCar = carKey => ({type: SELECT_CAR, carKey})
+export const addCar = car => ({ type: ADD_CAR, car })
+export const selectCar = carKey => ({ type: SELECT_CAR, carKey })
 export const updateCar = car => {
-  return {type: UPDATE_CAR, car}
+  return { type: UPDATE_CAR, car }
 }
-export const removeCar = carKey => ({type: REMOVE_CAR, carKey})
+export const removeCar = carKey => ({ type: REMOVE_CAR, carKey })
 
 /* Thunk Creators */
 export const finalSubmit = (user, cars) => async () => {
   let res
   try {
-    res = await axios.post(`/api/cars`, {user, cars})
+    res = await axios.post(`/api/cars`, { user, cars })
     if (res.status === 201) history.push('/thanks')
   } catch (error) {
     console.error(error)
@@ -59,7 +59,7 @@ const initialState = {
 export default function(state = initialState, action) {
   switch (action.type) {
     case ADD_CAR:
-      return {...state, cars: [...state.cars, action.car]}
+      return { ...state, cars: [...state.cars, action.car] }
 
     case SELECT_CAR:
       return {
@@ -81,7 +81,7 @@ export default function(state = initialState, action) {
         ...state,
         cars: state.cars.map(car => {
           if (car.carKey === action.car.carKey) {
-            return {...car, ...action.car}
+            return { ...car, ...action.car }
           } else return car
         }),
         selected: {}

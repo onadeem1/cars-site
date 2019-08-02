@@ -6,7 +6,7 @@ const session = require('express-session')
 const passport = require('passport')
 const SequelizeStore = require('connect-session-sequelize')(session.Store)
 const db = require('../database')
-const sessionStore = new SequelizeStore({db})
+const sessionStore = new SequelizeStore({ db })
 const PORT = process.env.PORT || 3000
 const app = express()
 module.exports = app
@@ -28,7 +28,7 @@ passport.deserializeUser(async (id, done) => {
 const createApp = () => {
   app.use(morgan('dev'))
   app.use(express.json())
-  app.use(express.urlencoded({extended: true}))
+  app.use(express.urlencoded({ extended: true }))
   app.use(compression())
 
   // session middleware with passport
@@ -77,7 +77,7 @@ const startListening = () => {
   app.listen(PORT, () => console.log(`Mixing it up on port ${PORT}`))
 }
 
-const syncDb = () => db.sync({force: true})
+const syncDb = () => db.sync({ force: true })
 
 async function bootApp() {
   await sessionStore.sync()

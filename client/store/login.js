@@ -1,14 +1,14 @@
 import axios from 'axios'
 import history from '../history'
-import {setLoadingFalse, setLoadingTrue} from './loading'
+import { setLoadingFalse, setLoadingTrue } from './loading'
 
 /* Action Types */
 const GET_USER = 'GET_USER'
 const REMOVE_USER = 'REMOVE_USER'
 
 /* Action Creators */
-const getUser = user => ({type: GET_USER, user})
-const removeUser = () => ({type: REMOVE_USER})
+const getUser = user => ({ type: GET_USER, user })
+const removeUser = () => ({ type: REMOVE_USER })
 
 /* Initial State */
 const defaultUser = {}
@@ -28,9 +28,9 @@ export const me = () => async dispatch => {
 export const auth = (email, password, method) => async dispatch => {
   let res
   try {
-    res = await axios.post(`/api/admin/${method}`, {email, password})
+    res = await axios.post(`/api/admin/${method}`, { email, password })
   } catch (authError) {
-    return dispatch(getUser({error: authError}))
+    return dispatch(getUser({ error: authError }))
   }
 
   try {

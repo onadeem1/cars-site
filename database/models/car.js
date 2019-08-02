@@ -1,4 +1,4 @@
-const {STRING, INTEGER, BOOLEAN, DATE} = require('sequelize')
+const { STRING, INTEGER, BOOLEAN, DATE } = require('sequelize')
 const db = require('../db')
 const moment = require('moment')
 
@@ -45,7 +45,7 @@ const Car = db.define('car', {
 
 Car.createMultiple = async function(cars, userId) {
   const createdCars = await Promise.all(
-    cars.map(car => Car.create({...car, userId}))
+    cars.map(car => Car.create({ ...car, userId }))
   )
   return createdCars
 }

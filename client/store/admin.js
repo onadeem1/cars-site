@@ -5,13 +5,13 @@ const GET_LIST = 'GET_LIST'
 const UPDATE_LIST = 'UPDATE_LIST'
 
 /* Action Creators */
-export const getList = cars => ({type: GET_LIST, cars})
-export const updateList = car => ({type: UPDATE_LIST, car})
+export const getList = cars => ({ type: GET_LIST, cars })
+export const updateList = car => ({ type: UPDATE_LIST, car })
 
 /* Thunk Creators  */
 export const loadWishList = () => async dispatch => {
   try {
-    const {data} = await axios.get(`/api/cars`)
+    const { data } = await axios.get(`/api/cars`)
     dispatch(getList(data))
   } catch (error) {
     console.error(error)
@@ -20,7 +20,7 @@ export const loadWishList = () => async dispatch => {
 
 export const updateWishList = (id, obj) => async dispatch => {
   try {
-    const {data} = await axios.put(`/api/cars/${id}`, obj)
+    const { data } = await axios.put(`/api/cars/${id}`, obj)
     dispatch(updateList(data))
   } catch (error) {
     console.error(error)
@@ -38,7 +38,7 @@ export default function(state = initialState, action) {
         if (action.car.id !== car.id) {
           return car
         } else {
-          return {...car, ...action.car}
+          return { ...car, ...action.car }
         }
       })
 

@@ -1,10 +1,10 @@
 const router = require('express').Router()
-const {Admin} = require('../../database/models')
+const { Admin } = require('../../database/models')
 module.exports = router
 
 router.post('/login', async (req, res, next) => {
   try {
-    const admin = await Admin.findOne({where: {email: req.body.email}})
+    const admin = await Admin.findOne({ where: { email: req.body.email } })
     if (!admin) {
       console.log('No such admin found:', req.body.email)
       res.status(401).send('Wrong admin name and/or password')

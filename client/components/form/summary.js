@@ -1,8 +1,8 @@
 import React from 'react'
-import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import carImage from '../../images/car-background.jpeg'
-import {selectCar, removeCar} from '../../store'
+import { selectCar, removeCar } from '../../store'
 import './css/summary.css'
 
 const Summary = props => {
@@ -18,7 +18,7 @@ const Summary = props => {
         {props.cars &&
           props.cars.map(car => (
             <div className="car-btn-container" key={car.carKey}>
-              <Link to={{pathname: '/update', state: {car}}}>
+              <Link to={{ pathname: '/update', state: { car } }}>
                 <button
                   onClick={() => handleClick(car.carKey)}
                   className="car-btn"
@@ -68,6 +68,6 @@ const mapState = state => {
   }
 }
 
-const mapDispatch = {selectCar, removeCar}
+const mapDispatch = { selectCar, removeCar }
 
 export default connect(mapState, mapDispatch)(Summary)

@@ -1,8 +1,8 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {me} from '../../store'
+import { me } from '../../store'
 import Login from './auth-form'
 import AdminPanel from './admin-panel'
 import './css/table.css'
@@ -14,7 +14,7 @@ class Routes extends Component {
   }
 
   render() {
-    const {isLoggedIn} = this.props
+    const { isLoggedIn } = this.props
     return (
       <div className="page-container">
         <img className="car-background" src={carImage} />

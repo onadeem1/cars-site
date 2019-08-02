@@ -1,9 +1,9 @@
 import React from 'react'
-import {connect} from 'react-redux'
-import {Formik, Form, Field} from 'formik'
+import { connect } from 'react-redux'
+import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'
-import {addCar, updateCar} from '../../store'
-import {withRouter} from 'react-router-dom'
+import { addCar, updateCar } from '../../store'
+import { withRouter } from 'react-router-dom'
 import carList from '../carList'
 import carImage from '../../images/car-background.jpeg'
 import './css/car-form.css'
@@ -86,13 +86,13 @@ const CarForm = props => {
         validationSchema={CarSchema}
         onSubmit={(values, actions) => {
           carKey
-            ? props.updateCar({...values, carKey})
-            : props.addCar({...values, carKey: generateKey(values.model)})
+            ? props.updateCar({ ...values, carKey })
+            : props.addCar({ ...values, carKey: generateKey(values.model) })
           actions.resetForm()
           props.history.push('/summary')
         }}
       >
-        {({values, handleChange}) => {
+        {({ values, handleChange }) => {
           let disabled = !CarSchema.isValidSync(values)
           let modelEnabled = values.make.length > 0
 
@@ -295,6 +295,6 @@ const mapState = state => ({
   selected: state.cars.selected
 })
 
-const mapDispatch = {addCar, updateCar}
+const mapDispatch = { addCar, updateCar }
 
 export default withRouter(connect(mapState, mapDispatch)(CarForm))

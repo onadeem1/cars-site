@@ -6,8 +6,8 @@ const SET_LOADING_FALSE = 'SET_LOADING_FALSE'
 const defaultLoading = false
 
 /* Action Creators */
-export const setLoadingTrue = () => ({type: SET_LOADING_TRUE, bool: true})
-export const setLoadingFalse = () => ({type: SET_LOADING_FALSE, bool: false})
+export const setLoadingTrue = () => ({ type: SET_LOADING_TRUE, bool: true })
+export const setLoadingFalse = () => ({ type: SET_LOADING_FALSE, bool: false })
 
 /* Reducer */
 export default function(state = defaultLoading, action) {

@@ -1,9 +1,9 @@
 import React from 'react'
-import {connect} from 'react-redux'
-import {Formik, Form, Field} from 'formik'
+import { connect } from 'react-redux'
+import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'
-import {finalSubmit} from '../../store'
-import {withRouter} from 'react-router-dom'
+import { finalSubmit } from '../../store'
+import { withRouter } from 'react-router-dom'
 import carImage from '../../images/car-background.jpeg'
 import './css/user-form.css'
 
@@ -38,7 +38,7 @@ const UserForm = props => {
           actions.resetForm()
         }}
       >
-        {({values}) => {
+        {({ values }) => {
           let disabled = !UserSchema.isValidSync(values)
           return (
             <div className="user-form-page-container">
@@ -99,6 +99,6 @@ const mapState = state => {
   }
 }
 
-const mapDispatch = {finalSubmit}
+const mapDispatch = { finalSubmit }
 
 export default withRouter(connect(mapState, mapDispatch)(UserForm))
