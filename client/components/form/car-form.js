@@ -4,7 +4,6 @@ import { Formik, Form, Field } from 'formik'
 import { addCar, updateCar } from '../../store'
 import { withRouter } from 'react-router-dom'
 import carList from '../carList'
-import carImage from '../../images/car-background.jpeg'
 import {
   calcBudget,
   calcYears,
@@ -30,7 +29,6 @@ const CarForm = props => {
 
   return (
     <div className="car-form-page">
-      <img className="car-background" src={carImage} />
       <Formik
         initialValues={{
           make: make || '',
@@ -234,11 +232,7 @@ const CarForm = props => {
                   </div>
                 </div>
                 <div className="button-container">
-                  <button
-                    className="next-btn"
-                    type="submit"
-                    disabled={disabled}
-                  >
+                  <button className="red-btn" type="submit" disabled={disabled}>
                     Next
                   </button>
                 </div>

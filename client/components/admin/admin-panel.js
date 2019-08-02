@@ -124,7 +124,7 @@ const Admin = props => {
         </div>
         <div className="logout-container box">
           <a className="logout-link" href="#" onClick={() => props.logout()}>
-            <button className="next-btn logout-btn" type="submit">
+            <button className="red-btn logout-btn" type="submit">
               Logout
             </button>
           </a>

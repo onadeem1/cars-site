@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { Formik, Form, Field } from 'formik'
 import { finalSubmit } from '../../store'
 import { withRouter } from 'react-router-dom'
-import carImage from '../../images/car-background.jpeg'
 import { UserSchema } from './helper-files/schemas'
 import '../styling/user-form.scss'
 
@@ -12,7 +11,6 @@ const UserForm = props => {
 
   return (
     <div className="user-form-page">
-      <img className="car-background" src={carImage} />
       <Formik
         initialValues={{
           name: '',
@@ -63,11 +61,7 @@ const UserForm = props => {
                 </div>
 
                 <div className="button-container">
-                  <button
-                    className="next-btn"
-                    type="submit"
-                    disabled={disabled}
-                  >
+                  <button className="red-btn" type="submit" disabled={disabled}>
                     Submit Request
                   </button>
                 </div>

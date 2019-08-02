@@ -6,7 +6,6 @@ import { me } from '../../store'
 import Login from './auth-form'
 import AdminPanel from './admin-panel'
 import '../styling/admin-panel.scss'
-import carImage from '../../images/car-background.jpeg'
 
 class Routes extends Component {
   componentDidMount() {
@@ -17,7 +16,6 @@ class Routes extends Component {
     const { isLoggedIn } = this.props
     return (
       <div className="page-container">
-        <img className="car-background" src={carImage} />
         {this.props.loading ? (
           <div className="loading">
             <div className="loading-text">Loading...</div>

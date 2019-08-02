@@ -1,3 +1,6 @@
+@import './re-usable/variables.scss';
+@import './re-usable/buttons.scss';
+
 .summary-page-container {
   margin: 0px 20%;
   padding-top: 5%;
@@ -8,9 +11,9 @@
   border-radius: 8px;
   padding: 14px;
   background: transparent;
-  color: #f60000;
+  color: $red;
   margin-top: 20px;
-  border: 1px solid #f60000;
+  border: 1px solid $red;
   font-size: 11px;
   font-weight: 700;
 }
@@ -21,12 +24,11 @@
 
 .remove-btn {
   position: absolute;
-
   font-size: 12px;
   top: 45%;
   right: 10px;
   color: white;
-  background: linear-gradient(0deg, #a40b22, #e44857);
+  background: linear-gradient(0deg, $red-gradient-dark, $red-gradient-light);
   border: 0px;
   box-shadow: 0px;
   border-radius: 4px;
@@ -42,6 +44,6 @@
   margin: 14px 0px;
 }
 
-.summary-next-btn-container {
+.summary-red-btn-container {
   margin-top: 200px;
 }

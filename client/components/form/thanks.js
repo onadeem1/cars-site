@@ -1,11 +1,9 @@
 import React from 'react'
-import carImage from '../../images/car-background.jpeg'
 import checkImage from '../../images/check-mark.png'
 import '../styling/thanks.scss'
 
 const App = () => (
   <div className="thanks-page">
-    <img className="car-background" src={carImage} />
     <div className="thanks-page-container">
       <div className="check-container">
         <img className="check-image" src={checkImage} />
@@ -18,7 +16,7 @@ const App = () => (
         </div>
       </div>
       <div className="thanks-button-container">
-        <button className="next-btn" type="submit">
+        <button className="red-btn" type="submit">
           Thank You!
         </button>
       </div>

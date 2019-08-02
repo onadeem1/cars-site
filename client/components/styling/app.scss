@@ -1,0 +1,12 @@
+.app-container {
+  position: relative;
+}
+
+.car-background {
+  position: absolute;
+  z-index: -1;
+  opacity: 0.07;
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+}

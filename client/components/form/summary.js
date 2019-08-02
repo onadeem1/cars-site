@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import carImage from '../../images/car-background.jpeg'
 import { selectCar, removeCar } from '../../store'
 import '../styling/summary.scss'
 
@@ -12,7 +11,6 @@ const Summary = props => {
 
   return (
     <div className="summary-page">
-      <img className="car-background" src={carImage} />
       <div className="summary-page-container">
         <div className="summary-headline">Add up to 3 vehicles</div>
         {props.cars &&
@@ -43,16 +41,16 @@ const Summary = props => {
           props.cars.length < 3 && (
             <div className="summary-add-btn-container">
               <Link to="/">
-                <button className="next-btn" type="button">
+                <button className="red-btn" type="button">
                   Add Another Vehicle
                 </button>
               </Link>
             </div>
           )}
 
-        <div className="summary-next-btn-container">
+        <div className="summary-red-btn-container">
           <Link to="/user">
-            <button className="next-btn" type="button">
+            <button className="red-btn" type="button">
               NEXT
             </button>
           </Link>

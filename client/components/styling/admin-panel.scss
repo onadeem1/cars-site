@@ -1,3 +1,6 @@
+@import './re-usable/variables.scss';
+@import './re-usable/buttons.scss';
+
 .page-container {
   position: relative;
 }
@@ -27,7 +30,7 @@
 }
 
 .error-box {
-  color: #e44857;
+  color: $red;
   margin-top: 25px;
 }
 
@@ -39,8 +42,8 @@
 .loading {
   width: 100vw;
   height: 100vh;
-  background: #f0f0f0;
-  color: #9a8d90;
+  background: $background-grey;
+  color: $grey;
   font-size: 50px;
   font-weight: 500;
   display: flex;
@@ -115,8 +118,8 @@
 }
 
 .Closed {
-  color: #e44857;
-  border: 1.5px solid #e44857;
+  color: $red;
+  border: 1.5px solid $red;
 }
 
 .Open,
@@ -142,6 +145,6 @@
 
 .Open:hover,
 .Closed:hover {
-  box-shadow: 2px 4px 5px #9a8d90;
+  box-shadow: 2px 4px 5px $grey;
   font-weight: 400;
 }
