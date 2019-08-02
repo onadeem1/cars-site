@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import { me } from '../../store'
 import Login from './auth-form'
 import AdminPanel from './admin-panel'
-import '../styling/admin-panel.scss'
+import '../styling/admin.scss'
 
 class Routes extends Component {
   componentDidMount() {
