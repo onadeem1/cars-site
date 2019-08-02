@@ -29,30 +29,7 @@ export const finalSubmit = (user, cars) => async () => {
 /* Initial State */
 const initialState = {
   selected: {},
-  cars: [
-    {
-      make: 'Nissan',
-      model: 'Altima',
-      minYear: 1999,
-      maxYear: 2007,
-      minBudget: 2000,
-      maxBudget: 5000,
-      maxMileage: 25000,
-      zip: 11801,
-      carKey: 'lksdjflkjdslfjds'
-    },
-    {
-      make: 'Nissan',
-      model: 'sentraa',
-      minYear: 1999,
-      maxYear: 2007,
-      minBudget: 2000,
-      maxBudget: 5000,
-      maxMileage: 25000,
-      zip: 10003,
-      carKey: 'jdjdjdjdjdjdkjdk'
-    }
-  ]
+  cars: []
 }
 
 /* Reducer */
