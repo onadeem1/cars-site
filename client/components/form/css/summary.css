@@ -1,0 +1,47 @@
+.summary-page-container {
+  margin: 0px 20%;
+  padding-top: 5%;
+}
+
+.car-btn {
+  width: 100%;
+  border-radius: 8px;
+  padding: 14px;
+  background: transparent;
+  color: #f60000;
+  margin-top: 20px;
+  border: 1px solid #f60000;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.car-btn-container {
+  position: relative;
+}
+
+.remove-btn {
+  position: absolute;
+
+  font-size: 12px;
+  top: 45%;
+  right: 10px;
+  color: white;
+  background: linear-gradient(0deg, #a40b22, #e44857);
+  border: 0px;
+  box-shadow: 0px;
+  border-radius: 4px;
+  padding: 5px 8px;
+}
+
+.summary-headline {
+  font-size: 23px;
+  font-weight: 900;
+}
+
+.summary-add-btn-container {
+  margin: 14px 0px;
+}
+
+.summary-next-btn-container {
+  margin-top: 200px;
+}

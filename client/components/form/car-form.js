@@ -2,9 +2,10 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Formik, Form, Field} from 'formik'
 import * as Yup from 'yup'
-import {addCar} from '../../store'
+import {addCar, updateCar} from '../../store'
 import {withRouter} from 'react-router-dom'
 import carList from '../carList'
+import carImage from '../../images/car-background.jpeg'
 import './css/car-form.css'
 
 const CarSchema = Yup.object().shape({
@@ -14,12 +15,7 @@ const CarSchema = Yup.object().shape({
   maxYear: Yup.number().required('Required'),
   minBudget: Yup.number().required('Required'),
   maxBudget: Yup.number().required('Required'),
-  maxMileage: Yup.number().required('Required'),
-  zip: Yup.number()
-    .required('Required')
-    .test('len', 'Must be exactly 5 characters', val => {
-      if (val) return val.toString().length === 5
-    })
+  maxMileage: Yup.number().required('Required')
 })
 
 //helper funcs
@@ -50,25 +46,48 @@ const calcBudget = (minBudget = 0, maxBudget = 100000) => {
   return arr
 }
 
+const convertNumber = number => {
+  let result = number.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
+  return result
+}
+
 const carBrands = Object.keys(carList)
 
+const generateKey = pre => {
+  return `${pre}_${new Date().getTime()}`
+}
+
+// eslint-disable-next-line complexity
 const CarForm = props => {
+  let {
+    make,
+    carKey,
+    model,
+    minYear,
+    maxYear,
+    minBudget,
+    maxBudget,
+    maxMileage
+  } = props.selected
+
   return (
     <div className="car-form-page">
+      <img className="car-background" src={carImage} />
       <Formik
         initialValues={{
-          make: '',
-          model: '',
-          minYear: '',
-          maxYear: '',
-          minBudget: '',
-          maxBudget: '',
-          maxMileage: 0,
-          zip: ''
+          make: make || '',
+          model: model || '',
+          minYear: minYear || '',
+          maxYear: maxYear || '',
+          minBudget: minBudget || '',
+          maxBudget: maxBudget || '',
+          maxMileage: maxMileage || ''
         }}
         validationSchema={CarSchema}
         onSubmit={(values, actions) => {
-          props.addCar(values)
+          carKey
+            ? props.updateCar({...values, carKey})
+            : props.addCar({...values, carKey: generateKey(values.model)})
           actions.resetForm()
           props.history.push('/summary')
         }}
@@ -90,6 +109,10 @@ const CarForm = props => {
               </div>
               <Form className="car-form">
                 <div className="make-container">
+                  <img
+                    className="arrow"
+                    src="http://cdn.onlinewebfonts.com/svg/img_295694.svg"
+                  />
                   <Field
                     className="form-control"
                     component="select"
@@ -107,6 +130,10 @@ const CarForm = props => {
                   </Field>
                 </div>
                 <div className="model-container">
+                  <img
+                    className="arrow"
+                    src="http://cdn.onlinewebfonts.com/svg/img_295694.svg"
+                  />
                   <Field
                     className="form-control"
                     component="select"
@@ -132,13 +159,17 @@ const CarForm = props => {
                     </div>
                     <div className="years-select">
                       <div className="min-years-select">
+                        <img
+                          className="arrow-year"
+                          src="http://cdn.onlinewebfonts.com/svg/img_295694.svg"
+                        />
                         <Field
                           className="form-control"
                           component="select"
                           name="minYear"
                         >
-                          <option key="old" value="">
-                            Add Year
+                          <option key="old" value="" disabled hidden>
+                            year
                           </option>
                           {calcYears(1970, values.maxYear).map(year => (
                             <option key={year} value={year}>
@@ -148,14 +179,18 @@ const CarForm = props => {
                         </Field>
                       </div>
                       <div className="to-text">to</div>
-                      <div className="min-years-select">
+                      <div className="max-years-select">
+                        <img
+                          className="arrow-year"
+                          src="http://cdn.onlinewebfonts.com/svg/img_295694.svg"
+                        />
                         <Field
                           className="form-control"
                           component="select"
                           name="maxYear"
                         >
-                          <option key="new" value="">
-                            Add Year
+                          <option key="new" value="" disabled hidden>
+                            year
                           </option>
                           {calcYears(values.minYear, 2019).map(year => (
                             <option key={year} value={year}>
@@ -178,10 +213,14 @@ const CarForm = props => {
                         min="0"
                         step="5000"
                         max="200000"
+                        value={values.maxMileage || 0}
                         onChange={handleChange}
+                        className="form-control-range"
                       />
                     </div>
-                    <div className="mileage-number">{values.maxMileage}</div>
+                    <div className="mileage-number">
+                      {convertNumber(values.maxMileage)} miles
+                    </div>
                   </div>
                 </div>
                 <div className="budget-zip-container">
@@ -191,46 +230,47 @@ const CarForm = props => {
                     </div>
                     <div className="budget-select">
                       <div className="min-budget-select">
+                        <img
+                          className="arrow-year"
+                          src="http://cdn.onlinewebfonts.com/svg/img_295694.svg"
+                        />
                         <Field
                           className="form-control"
                           component="select"
                           name="minBudget"
                         >
-                          <option key="start" value="">
-                            ---
+                          <option disabled hidden key="start" value="">
+                            low
                           </option>
                           {calcBudget(0, values.maxBudget).map(budget => (
                             <option key={budget} value={budget}>
-                              {budget}
+                              $ {convertNumber(budget)}
                             </option>
                           ))}
                         </Field>
                       </div>
                       <div className="to-text">to</div>
                       <div className="max-budget-select">
+                        <img
+                          className="arrow-year"
+                          src="http://cdn.onlinewebfonts.com/svg/img_295694.svg"
+                        />
                         <Field
                           className="form-control"
                           component="select"
                           name="maxBudget"
                         >
-                          <option key="end" value="">
-                            ---
+                          <option key="end" disabled hidden value="">
+                            high
                           </option>
                           {calcBudget(values.minBudget, 100000).map(budget => (
                             <option key={budget} value={budget}>
-                              {budget}
+                              $ {convertNumber(budget)}
                             </option>
                           ))}
                         </Field>
                       </div>
                     </div>
-                  </div>
-                  <div className="zip-container">
-                    <Field
-                      className="form-control"
-                      name="zip"
-                      placeholder="zip"
-                    />
                   </div>
                 </div>
                 <div className="button-container">
@@ -239,7 +279,7 @@ const CarForm = props => {
                     type="submit"
                     disabled={disabled}
                   >
-                    Submit
+                    Next
                   </button>
                 </div>
               </Form>
@@ -251,6 +291,10 @@ const CarForm = props => {
   )
 }
 
-const mapDispatch = {addCar}
+const mapState = state => ({
+  selected: state.cars.selected
+})
 
-export default withRouter(connect(null, mapDispatch)(CarForm))
+const mapDispatch = {addCar, updateCar}
+
+export default withRouter(connect(mapState, mapDispatch)(CarForm))

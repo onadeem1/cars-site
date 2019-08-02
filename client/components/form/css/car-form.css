@@ -1,44 +1,166 @@
 .car-form-page {
-  /* background: pink; */
-  height: 100vh;
+  position: relative;
 }
 
 form div {
   margin: 0px;
 }
 
+.form-control {
+  border: 0px;
+  border-bottom: 2px solid #9a8d90;
+  background: transparent;
+  border-radius: 0px !important;
+}
+
+.form-control:disabled {
+  cursor: not-allowed;
+}
+
+.form-control:focus {
+  border-color: #9a8d90;
+  background: transparent;
+  outline: 0;
+  -webkit-box-shadow: inset 0 0px 0px #9a8d90, 0 0 0px #9a8d90;
+  box-shadow: inset 0 0px 0px #9a8d90, 0 0 0px #9a8d90;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+*:focus {
+  outline: 0;
+}
+
+select:active {
+  background: transparent;
+}
+
+.car-background {
+  position: absolute;
+  z-index: -1;
+  opacity: 0.07;
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+}
+
 .car-form-page-container {
-  margin: 0px 20%;
+  margin: 0px 5%;
   padding-top: 5%;
 }
 .text-container {
-  /* background: blue; */
+  margin-bottom: 50px;
 }
 .header-container {
   text-align: center;
+  font-size: 23px;
+  font-weight: 800;
 }
 .detail-container {
   text-align: center;
   margin-bottom: 30px;
 }
 .make-container {
-  /* background: red; */
   padding: 10px;
   display: flex;
+  position: relative;
 }
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  width: 15px;
+  opacity: 0.3;
+  transition: 0.2s ease;
+  z-index: -2;
+}
+
+.arrow-year {
+  position: absolute;
+  top: 50%;
+  right: 6px;
+  transform: translateY(-50%);
+  width: 10px;
+  opacity: 0.3;
+  transition: 0.2s ease;
+  z-index: -2;
+}
+
 .model-container {
-  /* background: green; */
   padding: 10px;
   display: flex;
+  position: relative;
 }
+
 .years-mileage-container {
   display: flex;
-  /* background: orange; */
+  flex-direction: column;
+  margin-top: 15px;
   padding: 10px;
 }
+
 .years-container {
-  width: 33%;
 }
+
+.mileage-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 25px;
+}
+
+.mileage-slider {
+  padding-bottom: 5px;
+  width: 60%;
+}
+
+.budget-zip-container {
+  display: flex;
+  margin-top: 15px;
+  padding: 10px;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 600px) {
+  .car-form-page-container {
+    margin: 0px 20%;
+  }
+  .years-mileage-container {
+    flex-direction: row;
+  }
+  .years-container {
+    width: 50%;
+  }
+
+  .mileage-container {
+    margin-left: auto;
+    width: 50%;
+    align-items: flex-end;
+    margin-top: 0px;
+  }
+  .mileage-text {
+    margin-bottom: 8px;
+  }
+  .mileage-number {
+    margin-top: 5px;
+  }
+  .zip-select {
+    text-align: right;
+  }
+  .budget-zip-container {
+    flex-direction: row;
+  }
+
+  .budget-container {
+    width: 50%;
+  }
+}
+
 .years-select {
   display: flex;
 }
@@ -46,39 +168,41 @@ form div {
   padding: 5px 10px;
   vertical-align: center;
 }
-.mileage-container {
-  margin-left: auto;
-  width: 33%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
-.budget-zip-container {
-  display: flex;
-  /* background: yellow; */
-  padding: 10px;
-}
-.budget-container {
-  width: 33%;
-}
+
 .budget-select {
   display: flex;
 }
-.zip-container {
-  margin-left: auto;
-  width: 33%;
-  display: flex;
-  justify-content: flex-end;
-}
+
 .button-container {
-  /* background: blue; */
-  padding: 10px 0px;
+  padding: 10px;
   display: flex;
   justify-content: center;
+  margin-top: 50px;
+  padding-bottom: 25px;
 }
 
 .next-btn {
-  width: 90%;
-  border-radius: 5px;
-  padding: 10px;
+  width: 100%;
+  border-radius: 8px;
+  padding: 14px;
+  background: linear-gradient(0deg, #a40b22, #e44857);
+  color: white;
+}
+
+.next-btn:disabled {
+  opacity: 0.5;
+}
+
+.zip-select {
+  width: 50%;
+}
+
+.min-years-select,
+.max-years-select,
+.min-budget-select,
+.max-budget-select {
+  position: relative;
+  padding-right: 5px;
+  width: 35%;
+  min-width: 80px;
 }
