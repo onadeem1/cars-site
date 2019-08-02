@@ -1,5 +1,6 @@
 const Car = require('./car')
 const User = require('./user')
+const Admin = require('./admin')
 
 /**
  * We'll export all of our models here, so that any time a module needs a model,
@@ -13,5 +14,6 @@ Car.belongsTo(User)
 
 module.exports = {
   Car,
-  User
+  User,
+  Admin
 }
