@@ -1,63 +1,21 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Formik, Form, Field } from 'formik'
-import * as Yup from 'yup'
 import { addCar, updateCar } from '../../store'
 import { withRouter } from 'react-router-dom'
 import carList from '../carList'
 import carImage from '../../images/car-background.jpeg'
+import {
+  calcBudget,
+  calcYears,
+  convertNumber,
+  generateKey
+} from './helper-files/helper-functions'
+import { CarSchema } from './helper-files/schemas'
 import './css/car-form.css'
-
-const CarSchema = Yup.object().shape({
-  make: Yup.string().required('Required'),
-  model: Yup.string().required('Required'),
-  minYear: Yup.number().required('Required'),
-  maxYear: Yup.number().required('Required'),
-  minBudget: Yup.number().required('Required'),
-  maxBudget: Yup.number().required('Required'),
-  maxMileage: Yup.number().required('Required')
-})
-
-//helper funcs
-const calcYears = (minYear = 1970, maxYear = 2019) => {
-  if (minYear === '') minYear = 1970
-  if (maxYear === '') maxYear = 2019
-  let arr = []
-  let i
-  for (i = minYear; i <= maxYear; i++) {
-    arr.push(i)
-  }
-  return arr
-}
-
-// eslint-disable-next-line complexity
-const calcBudget = (minBudget = 0, maxBudget = 100000) => {
-  if (minBudget === '') minBudget = 0
-  if (maxBudget === '') maxBudget = 100000
-  if (typeof minBudget === 'string') minBudget = +minBudget
-  if (typeof maxBudget === 'string') maxBudget = +maxBudget
-  let arr = []
-  let i
-  for (i = minBudget; i <= maxBudget; i = i + 1000) {
-    arr.push(i)
-    if (i >= 20000 && i < 50000) i = i + 1000
-    else if (i >= 50000) i = i + 4000
-  }
-  return arr
-}
-
-const convertNumber = number => {
-  let result = number.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
-  return result
-}
 
 const carBrands = Object.keys(carList)
 
-const generateKey = pre => {
-  return `${pre}_${new Date().getTime()}`
-}
-
-// eslint-disable-next-line complexity
 const CarForm = props => {
   let {
     make,
@@ -85,6 +43,7 @@ const CarForm = props => {
         }}
         validationSchema={CarSchema}
         onSubmit={(values, actions) => {
+          //check if a unique carKey exists to pre-populate & update request vs. a new request
           carKey
             ? props.updateCar({ ...values, carKey })
             : props.addCar({ ...values, carKey: generateKey(values.model) })
@@ -93,6 +52,7 @@ const CarForm = props => {
         }}
       >
         {({ values, handleChange }) => {
+          //check fields for submitting and to load car model values based on if user picked a make
           let disabled = !CarSchema.isValidSync(values)
           let modelEnabled = values.make.length > 0
 

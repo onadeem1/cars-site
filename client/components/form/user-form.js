@@ -1,24 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Formik, Form, Field } from 'formik'
-import * as Yup from 'yup'
 import { finalSubmit } from '../../store'
 import { withRouter } from 'react-router-dom'
 import carImage from '../../images/car-background.jpeg'
+import { UserSchema } from './helper-files/schemas'
 import './css/user-form.css'
-
-const UserSchema = Yup.object().shape({
-  name: Yup.string().required('Required'),
-  email: Yup.string()
-    .required('Required')
-    .email('Email Format please :)'),
-  phoneNumber: Yup.string().required('Required'),
-  zip: Yup.number()
-    .required('Required')
-    .test('len', 'Must be exactly 5 characters', val => {
-      if (val) return val.toString().length === 5
-    })
-})
 
 const UserForm = props => {
   const cars = props.cars
