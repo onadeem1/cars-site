@@ -9,10 +9,9 @@
 .car-btn {
   width: 100%;
   border-radius: 8px;
-  padding: 14px;
+  padding: 15px;
   background: transparent;
   color: $red;
-  margin-top: 20px;
   border: 1px solid $red;
   font-size: 11px;
   font-weight: 700;
@@ -20,12 +19,14 @@
 
 .car-btn-container {
   position: relative;
+  margin-top: 20px;
 }
 
 .remove-btn {
   position: absolute;
   font-size: 12px;
-  top: 45%;
+  top: 50%;
+  transform: translateY(-50%);
   right: 10px;
   color: white;
   background: linear-gradient(0deg, $red-gradient-dark, $red-gradient-light);
@@ -33,6 +34,18 @@
   box-shadow: 0px;
   border-radius: 4px;
   padding: 5px 8px;
+}
+
+@media screen and (max-width: 600px) {
+  .years-summary {
+    display: none;
+  }
+  .summary-page-container {
+    margin: 0px 10%;
+  }
+  .remove-btn {
+    font-size: 9px;
+  }
 }
 
 .summary-headline {

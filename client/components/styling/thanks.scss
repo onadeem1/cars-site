@@ -10,16 +10,24 @@
   justify-content: center;
 }
 
+@media screen and (max-width: 600px) {
+  .thanks-page-container {
+    margin: 0px 10%;
+  }
+}
+
 .check-container {
   padding: 20px;
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
   margin-top: 50px;
+  // max-width: 250px;
 }
 
 .check-image {
-  width: 40%;
+  width: 150px;
+  height: 150px;
 }
 
 .confirmed-text-container {

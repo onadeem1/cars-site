@@ -23,18 +23,18 @@ const Summary = props => {
                   type="button"
                 >
                   {car.make.toUpperCase()} {car.model.toUpperCase()}{' '}
-                  {car.minYear} - {car.maxYear}
+                  <span className="years-summary">
+                    {car.minYear} - {car.maxYear}
+                  </span>
                 </button>
               </Link>
-              <div className="remove-btn-container">
-                <button
-                  onClick={() => props.removeCar(car.carKey)}
-                  className="remove-btn"
-                  type="button"
-                >
-                  Remove
-                </button>
-              </div>
+              <button
+                onClick={() => props.removeCar(car.carKey)}
+                className="remove-btn"
+                type="button"
+              >
+                Remove
+              </button>
             </div>
           ))}
         {props.cars &&

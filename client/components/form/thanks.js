@@ -12,8 +12,7 @@ const App = () => (
       <div className="confirmed-text-container">
         <div className="confirmed-text">Confirmed!</div>
         <div className="confirmed-details-text">
-          We got your request, we'll send you an email<br />when we find a
-          match.
+          We got your request, we'll send you an email when we find a match.
         </div>
       </div>
       <div className="thanks-button-container">
