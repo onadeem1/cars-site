@@ -2,7 +2,7 @@ import axios from 'axios'
 import history from '../history'
 
 /* Action Types */
-const ADD_CAR = 'ADD_CAR'
+export const ADD_CAR = 'ADD_CAR'
 const SELECT_CAR = 'SELECT_CAR'
 const UPDATE_CAR = 'UPDATE_CAR'
 const REMOVE_CAR = 'REMOVE_CAR'
