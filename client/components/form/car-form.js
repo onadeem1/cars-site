@@ -110,124 +110,120 @@ const CarForm = props => {
                       ))}
                   </Field>
                 </div>
-                <div className="years-mileage-container">
-                  <div className="years-container">
-                    <div className="years-text">
-                      <label htmlFor="years">Years</label>
-                    </div>
-                    <div className="years-select">
-                      <div className="min-years-select">
-                        <img
-                          className="arrow-year"
-                          src="http://cdn.onlinewebfonts.com/svg/img_295694.svg"
-                        />
-                        <Field
-                          className="form-control"
-                          component="select"
-                          name="minYear"
-                        >
-                          <option key="old" value="" disabled hidden>
-                            year
-                          </option>
-                          {calcYears(1970, values.maxYear).map(year => (
-                            <option key={year} value={year}>
-                              {year}
-                            </option>
-                          ))}
-                        </Field>
-                      </div>
-                      <div className="to-text">to</div>
-                      <div className="max-years-select">
-                        <img
-                          className="arrow-year"
-                          src="http://cdn.onlinewebfonts.com/svg/img_295694.svg"
-                        />
-                        <Field
-                          className="form-control"
-                          component="select"
-                          name="maxYear"
-                        >
-                          <option key="new" value="" disabled hidden>
-                            year
-                          </option>
-                          {calcYears(values.minYear, 2019).map(year => (
-                            <option key={year} value={year}>
-                              {year}
-                            </option>
-                          ))}
-                        </Field>
-                      </div>
-                    </div>
+                <div className="years-container">
+                  <div className="years-text">
+                    <label htmlFor="years">Years</label>
                   </div>
-                  <div className="mileage-container">
-                    <div className="mileage-text">
-                      <label htmlFor="maxMileage">Maximum Mileage</label>
-                    </div>
-                    <div className="mileage-slider">
-                      <input
-                        type="range"
-                        id="start"
-                        name="maxMileage"
-                        min="0"
-                        step="5000"
-                        max="200000"
-                        value={values.maxMileage || 0}
-                        onChange={handleChange}
-                        className="form-control-range"
+                  <div className="years-select">
+                    <div className="min-years-select">
+                      <img
+                        className="arrow-year"
+                        src="http://cdn.onlinewebfonts.com/svg/img_295694.svg"
                       />
+                      <Field
+                        className="form-control"
+                        component="select"
+                        name="minYear"
+                      >
+                        <option key="old" value="" disabled hidden>
+                          year
+                        </option>
+                        {calcYears(1970, values.maxYear).map(year => (
+                          <option key={year} value={year}>
+                            {year}
+                          </option>
+                        ))}
+                      </Field>
                     </div>
-                    <div className="mileage-number">
-                      {convertNumber(values.maxMileage)} miles
+                    <div className="to-text">to</div>
+                    <div className="max-years-select">
+                      <img
+                        className="arrow-year"
+                        src="http://cdn.onlinewebfonts.com/svg/img_295694.svg"
+                      />
+                      <Field
+                        className="form-control"
+                        component="select"
+                        name="maxYear"
+                      >
+                        <option key="new" value="" disabled hidden>
+                          year
+                        </option>
+                        {calcYears(values.minYear, 2019).map(year => (
+                          <option key={year} value={year}>
+                            {year}
+                          </option>
+                        ))}
+                      </Field>
                     </div>
                   </div>
                 </div>
-                <div className="budget-zip-container">
-                  <div className="budget-container">
-                    <div className="budget-text">
-                      <label htmlFor="years">Budget</label>
+                <div className="mileage-container">
+                  <div className="mileage-text">
+                    <label htmlFor="maxMileage">Maximum Mileage</label>
+                  </div>
+                  <div className="mileage-slider">
+                    <input
+                      type="range"
+                      id="start"
+                      name="maxMileage"
+                      min="0"
+                      step="5000"
+                      max="200000"
+                      value={values.maxMileage || 0}
+                      onChange={handleChange}
+                      className="form-control-range"
+                    />
+                  </div>
+                  <div className="mileage-number">
+                    {convertNumber(values.maxMileage)} miles
+                  </div>
+                </div>
+                <div className="budget-container">
+                  <div className="budget-text">
+                    <label htmlFor="years">Budget</label>
+                  </div>
+                  <div className="budget-select">
+                    <div className="min-budget-select">
+                      <img
+                        className="arrow-year"
+                        src="http://cdn.onlinewebfonts.com/svg/img_295694.svg"
+                      />
+                      <Field
+                        className="form-control"
+                        component="select"
+                        name="minBudget"
+                      >
+                        <option disabled hidden key="start" value="">
+                          low
+                        </option>
+                        {calcBudget(0, values.maxBudget).map(budget => (
+                          <option key={budget} value={budget}>
+                            $ {convertNumber(budget)}
+                          </option>
+                        ))}
+                      </Field>
                     </div>
-                    <div className="budget-select">
-                      <div className="min-budget-select">
-                        <img
-                          className="arrow-year"
-                          src="http://cdn.onlinewebfonts.com/svg/img_295694.svg"
-                        />
-                        <Field
-                          className="form-control"
-                          component="select"
-                          name="minBudget"
-                        >
-                          <option disabled hidden key="start" value="">
-                            low
+                    <div className="to-text">to</div>
+                    <div className="max-budget-select">
+                      <img
+                        className="arrow-year"
+                        src="http://cdn.onlinewebfonts.com/svg/img_295694.svg"
+                      />
+                      <Field
+                        className="form-control"
+                        component="select"
+                        name="maxBudget"
+                      >
+                        <option key="end" disabled hidden value="">
+                          high
+                        </option>
+                        {calcBudget(values.minBudget, 100000).map(budget => (
+                          <option key={budget} value={budget}>
+                            $ {convertNumber(budget)}
                           </option>
-                          {calcBudget(0, values.maxBudget).map(budget => (
-                            <option key={budget} value={budget}>
-                              $ {convertNumber(budget)}
-                            </option>
-                          ))}
-                        </Field>
-                      </div>
-                      <div className="to-text">to</div>
-                      <div className="max-budget-select">
-                        <img
-                          className="arrow-year"
-                          src="http://cdn.onlinewebfonts.com/svg/img_295694.svg"
-                        />
-                        <Field
-                          className="form-control"
-                          component="select"
-                          name="maxBudget"
-                        >
-                          <option key="end" disabled hidden value="">
-                            high
-                          </option>
-                          {calcBudget(values.minBudget, 100000).map(budget => (
-                            <option key={budget} value={budget}>
-                              $ {convertNumber(budget)}
-                            </option>
-                          ))}
-                        </Field>
-                      </div>
+                        ))}
+                      </Field>
                     </div>
                   </div>
                 </div>

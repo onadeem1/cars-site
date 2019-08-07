@@ -1,8 +1,15 @@
 @import './re-usable/variables.scss';
 @import './re-usable/buttons.scss';
 
+.summary-page {
+  margin: 0px 10%;
+}
+
 .summary-page-container {
-  margin: 0px 20%;
+  margin: 0px auto;
+  max-width: 800px;
+  padding-left: 2%;
+  padding-right: 2%;
   padding-top: 5%;
 }
 
@@ -39,9 +46,6 @@
 @media screen and (max-width: 600px) {
   .years-summary {
     display: none;
-  }
-  .summary-page-container {
-    margin: 0px 10%;
   }
   .remove-btn {
     font-size: 9px;

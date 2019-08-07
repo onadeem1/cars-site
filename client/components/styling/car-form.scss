@@ -92,63 +92,50 @@ select:active {
   position: relative;
 }
 
-.years-mileage-container {
+.mileage-container,
+.years-container,
+.budget-container {
+  width: 75%;
+  margin: 15px auto;
   display: flex;
   flex-direction: column;
-  margin-top: 15px;
   padding: 10px;
-}
-
-.mileage-container {
-  display: flex;
-  flex-direction: column;
-  margin-top: 25px;
 }
 
 .mileage-slider {
   padding-bottom: 5px;
-  width: 60%;
-}
-
-.budget-zip-container {
-  display: flex;
-  margin-top: 15px;
-  padding: 10px;
-  flex-direction: column;
+  width: 100%;
 }
 
 @media screen and (min-width: 600px) {
   .car-form-page-container {
-    margin: 0px 20%;
-  }
-  .years-mileage-container {
-    flex-direction: row;
-  }
-  .years-container {
-    width: 50%;
+    margin: 0px auto;
+    max-width: 800px;
+    padding-left: 2%;
+    padding-right: 2%;
   }
 
+  .years-container,
+  .budget-container,
   .mileage-container {
-    margin-left: auto;
     width: 50%;
-    align-items: flex-end;
-    margin-top: 0px;
+    margin: 15px auto;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
   }
+
   .mileage-text {
     margin-bottom: 8px;
+  }
+  .mileage-slider {
+    width: 100%;
   }
   .mileage-number {
     margin-top: 5px;
   }
   .zip-select {
     text-align: right;
-  }
-  .budget-zip-container {
-    flex-direction: row;
-  }
-
-  .budget-container {
-    width: 50%;
   }
 }
 
@@ -182,6 +169,6 @@ select:active {
 .max-budget-select {
   position: relative;
   padding-right: 5px;
-  width: 35%;
+  width: 50%;
   min-width: 80px;
 }
