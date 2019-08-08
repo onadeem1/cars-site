@@ -26,7 +26,7 @@ describe('thunk creators', () => {
     store.clearActions()
   })
 
-  describe.only('loadWishList', () => {
+  describe('loadWishList', () => {
     it('eventually dispatches the GET LIST action', async () => {
       const fakeCars = [
         { make: 'nissan', model: 'altima' },
