@@ -15,7 +15,8 @@ const UserForm = props => {
         initialValues={{
           name: '',
           email: '',
-          phoneNumber: ''
+          phoneNumber: '',
+          zip: ''
         }}
         validationSchema={UserSchema}
         onSubmit={(values, actions) => {
