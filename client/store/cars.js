@@ -6,6 +6,7 @@ export const ADD_CAR = 'ADD_CAR'
 const SELECT_CAR = 'SELECT_CAR'
 const UPDATE_CAR = 'UPDATE_CAR'
 const REMOVE_CAR = 'REMOVE_CAR'
+const RESET_STATE = 'RESET_STATE'
 
 /* Action Creators */
 export const addCar = car => ({ type: ADD_CAR, car })
@@ -14,13 +15,17 @@ export const updateCar = car => {
   return { type: UPDATE_CAR, car }
 }
 export const removeCar = carKey => ({ type: REMOVE_CAR, carKey })
+export const resetState = () => ({ type: RESET_STATE })
 
 /* Thunk Creators */
-export const finalSubmit = (user, cars) => async () => {
+export const finalSubmit = (user, cars) => async dispatch => {
   let res
   try {
     res = await axios.post(`/api/cars`, { user, cars })
-    if (res.status === 201) history.push('/thanks')
+    if (res.status === 201) {
+      dispatch(resetState())
+      history.push('/thanks')
+    }
   } catch (error) {
     console.error(error)
   }
@@ -35,6 +40,9 @@ const initialState = {
 /* Reducer */
 export default function(state = initialState, action) {
   switch (action.type) {
+    case RESET_STATE:
+      return { ...initialState }
+
     case ADD_CAR:
       return { ...state, cars: [...state.cars, action.car] }
 
