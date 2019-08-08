@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const { Car, User } = require('../../database/models')
-const sendEmail = require('../email-helper')
+const { sendEmail, sendInventoryEmail } = require('../email-helper')
 module.exports = router
 
 router.get('/', async (req, res, next) => {
@@ -31,6 +31,16 @@ router.put('/:id', async (req, res, next) => {
       returning: true
     })
     res.json(updatedCar[1][0])
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.post('/inventory', (req, res, next) => {
+  try {
+    const { user, car } = req.body
+    sendInventoryEmail(user, car)
+    res.json('Sent')
   } catch (err) {
     next(err)
   }
