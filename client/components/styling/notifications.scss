@@ -1,0 +1,52 @@
+@import './re-usable/variables.scss';
+
+.notifications-form-page-container {
+  margin: 0px auto;
+  max-width: 800px;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-top: 5%;
+}
+
+@media screen and (max-width: 600px) {
+  .notifications-form-page-container {
+    margin: 0px 5%;
+  }
+}
+
+.message-container {
+  border: 2px $grey solid;
+  border-radius: 10px;
+  margin: 10px;
+  margin-top: 25px;
+}
+
+.title-container,
+.subtitle-container {
+  padding: 10px;
+}
+
+.form-control.notification-message-box {
+  border: 0px;
+}
+
+.notifications-header-container {
+  font-size: 23px;
+  font-weight: 800;
+  padding-left: 10px;
+}
+.notifications-subheader-container {
+  padding-left: 10px;
+  margin-bottom: 10px;
+}
+
+.notifications-thanks-container {
+  font-size: 23px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.notifications-thanks-detail-container {
+  text-align: center;
+  font-size: 18px;
+}
