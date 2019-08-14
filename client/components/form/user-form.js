@@ -1,14 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Formik, Form, Field } from 'formik'
-import { finalSubmit } from '../../store'
+import { finalSubmit, resetError } from '../../store'
 import { withRouter } from 'react-router-dom'
 import { UserSchema } from './helper-files/schemas'
+import SubmitError from '../error'
 import '../styling/user-form.scss'
 
 const UserForm = props => {
+  useEffect(() => {
+    props.resetError()
+    return function cleanup() {
+      props.resetError()
+    }
+  }, [])
   const cars = props.cars
-
   return (
     <div className="user-form-page">
       <Formik
@@ -24,7 +30,8 @@ const UserForm = props => {
           actions.resetForm()
         }}
       >
-        {({ values }) => {
+        {({ values, touched }) => {
+          if (props.errorMessage && touched.name) props.resetError()
           let disabled = !UserSchema.isValidSync(values)
           return (
             <div className="user-form-page-container">
@@ -60,12 +67,14 @@ const UserForm = props => {
                     placeholder="Zip Code"
                   />
                 </div>
-
                 <div className="button-container">
                   <button className="red-btn" type="submit" disabled={disabled}>
                     Submit Request
                   </button>
                 </div>
+                {props.errorMessage && (
+                  <SubmitError message={props.errorMessage} />
+                )}
               </Form>
             </div>
           )
@@ -77,10 +86,11 @@ const UserForm = props => {
 
 const mapState = state => {
   return {
-    cars: state.cars.cars
+    cars: state.cars.cars,
+    errorMessage: state.error
   }
 }
 
-const mapDispatch = { finalSubmit }
+const mapDispatch = { finalSubmit, resetError }
 
 export default withRouter(connect(mapState, mapDispatch)(UserForm))
