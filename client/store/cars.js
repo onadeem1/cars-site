@@ -1,5 +1,6 @@
 import axios from 'axios'
 import history from '../history'
+import { fetchFailure } from './error'
 
 /* Action Types */
 export const ADD_CAR = 'ADD_CAR'
@@ -27,7 +28,7 @@ export const finalSubmit = (user, cars) => async dispatch => {
       history.push('/thanks')
     }
   } catch (error) {
-    console.error(error)
+    dispatch(fetchFailure(error))
   }
 }
 
