@@ -5,7 +5,7 @@ import CarForm from './components/form/car-form'
 import Summary from './components/form/summary'
 import UserForm from './components/form/user-form'
 import Thanks from './components/form/thanks'
-import Auth from './components/admin'
+import Admin from './components/admin'
 
 const Routes = () => {
   return (
@@ -15,7 +15,7 @@ const Routes = () => {
       <Route path="/user" component={UserForm} />
       <Route path="/thanks" component={Thanks} />
       <Route path="/update" component={CarForm} />
-      <Route path="/admin" component={Auth} />
+      <Route path="/admin" component={Admin} />
       <Route component={CarForm} />
     </Switch>
   )
