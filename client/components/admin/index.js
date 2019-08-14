@@ -1,19 +1,20 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import { withRouter, NavLink, Route, Redirect, Switch } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import { me } from '../../store'
+import { me, logout } from '../../store'
 import Login from './auth-form'
 import AdminPanel from './admin-panel'
+import Notifications from './notifications'
 import '../styling/admin.scss'
 
-class Routes extends Component {
+class Admin extends Component {
   componentDidMount() {
     this.props.loadInitialData()
   }
 
   render() {
-    const { isLoggedIn } = this.props
+    const { isLoggedIn, match } = this.props
     return (
       <div className="page-container">
         {this.props.loading ? (
@@ -21,7 +22,33 @@ class Routes extends Component {
             <div className="loading-text">Loading...</div>
           </div>
         ) : isLoggedIn ? (
-          <AdminPanel />
+          <>
+            <div className="admin-navbar">
+              <NavLink className="admin-tabs" to={`${match.url}/requests`}>
+                Requests
+              </NavLink>
+              <NavLink className="admin-tabs" to={`${match.url}/notifications`}>
+                Notification
+              </NavLink>
+              <div className="logout-container">
+                <button
+                  className="red-btn logout-btn"
+                  onClick={() => this.props.logoutAdmin()}
+                  type="button"
+                >
+                  Logout
+                </button>
+              </div>
+            </div>
+            <Switch>
+              <Route path={`${match.path}/requests`} component={AdminPanel} />
+              <Route
+                path={`${match.path}/notifications`}
+                component={Notifications}
+              />
+              <Redirect to="/admin/requests" />
+            </Switch>
+          </>
         ) : (
           <Login />
         )}
@@ -32,7 +59,7 @@ class Routes extends Component {
 
 const mapState = state => {
   return {
-    isLoggedIn: !!state.login.id,
+    isLoggedIn: !!state.auth.id,
     loading: state.loading
   }
 }
@@ -41,13 +68,16 @@ const mapDispatch = dispatch => {
   return {
     loadInitialData() {
       dispatch(me())
+    },
+    logoutAdmin() {
+      dispatch(logout())
     }
   }
 }
 
-export default withRouter(connect(mapState, mapDispatch)(Routes))
+export default withRouter(connect(mapState, mapDispatch)(Admin))
 
-Routes.propTypes = {
+Admin.propTypes = {
   loadInitialData: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired
 }
