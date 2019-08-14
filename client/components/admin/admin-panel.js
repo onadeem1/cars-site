@@ -1,6 +1,6 @@
 /* eslint-disable react/display-name */
 import React, { useEffect, useState } from 'react'
-import { loadWishList, updateWishList, logout } from '../../store'
+import { loadWishList, updateWishList } from '../../store'
 import { connect } from 'react-redux'
 import ReactTable from 'react-table'
 import matchSorter from 'match-sorter'
@@ -11,13 +11,13 @@ const convertNumber = number => {
   return result
 }
 
-const Admin = props => {
+const AdminPanel = props => {
   useEffect(() => {
     props.loadWishList()
   }, [])
   const [search, setSearch] = useState('')
 
-  const data = matchSorter(props.admin, search, {
+  const data = matchSorter(props.adminPanel, search, {
     keys: ['make', 'model', 'user.name']
   })
 
@@ -121,13 +121,7 @@ const Admin = props => {
         <div className="title-container box">
           <span>Admin Panel</span>
         </div>
-        <div className="logout-container box">
-          <a className="logout-link" href="#" onClick={() => props.logout()}>
-            <button className="red-btn logout-btn" type="submit">
-              Logout
-            </button>
-          </a>
-        </div>
+        <div className="box" />
       </div>
       <div className="table-container">
         <ReactTable
@@ -142,10 +136,10 @@ const Admin = props => {
 
 const mapState = state => {
   return {
-    admin: state.admin
+    adminPanel: state.adminPanel
   }
 }
 
-const mapDispatch = { loadWishList, updateWishList, logout }
+const mapDispatch = { loadWishList, updateWishList }
 
-export default connect(mapState, mapDispatch)(Admin)
+export default connect(mapState, mapDispatch)(AdminPanel)

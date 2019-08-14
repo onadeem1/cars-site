@@ -3,7 +3,7 @@ import history from '../../history'
 import checkImage from '../../images/check-mark.png'
 import '../styling/thanks.scss'
 
-const App = () => (
+const Thanks = () => (
   <div className="thanks-page">
     <div className="thanks-page-container">
       <div className="check-container">
@@ -28,4 +28,4 @@ const App = () => (
   </div>
 )
 
-export default App
+export default Thanks
