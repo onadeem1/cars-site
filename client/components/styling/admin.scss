@@ -1,6 +1,48 @@
 @import './re-usable/variables.scss';
 @import './re-usable/buttons.scss';
 
+.admin-navbar {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin-left: 10px;
+}
+
+.admin-tabs {
+  padding: 13px 50px;
+  color: $grey;
+  border: 1px solid $grey;
+  border-radius: 5px;
+  margin-top: 10px;
+
+  &.active {
+    color: $red;
+    border: 1px solid $red;
+
+    &:hover {
+      text-decoration: none;
+      cursor: default;
+      background: transparent;
+      color: $red;
+    }
+  }
+  &:hover {
+    color: white;
+    text-decoration: none;
+    background: linear-gradient(0deg, $red-gradient-dark, $red-gradient-light);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .admin-tabs {
+    padding: 13px;
+  }
+  .admin-navbar {
+    justify-content: flex-start;
+    margin-left: 20px;
+  }
+}
+
 .page-container {
   position: relative;
 }
@@ -19,12 +61,6 @@
   margin-top: 50px;
 }
 
-.logout-btn {
-  max-width: 150px;
-  text-decoration: none;
-  padding: 0px;
-}
-
 .logout-link {
   width: 75%;
   display: flex;
@@ -38,8 +74,10 @@
 }
 
 .logout-container {
-  justify-content: flex-end;
-  margin-right: 10px;
+  min-width: 100px;
+  margin-top: 10px;
+  position: absolute;
+  right: 4%;
 }
 
 .loading {
