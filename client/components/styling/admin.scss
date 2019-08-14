@@ -113,6 +113,10 @@
   font-weight: 500;
 }
 
+.search-admin {
+  max-width: 75%;
+}
+
 @media screen and (min-width: 600px) {
   .title-container {
     font-size: 28px;
@@ -121,10 +125,10 @@
   .logout-link {
     width: 100%;
   }
-}
 
-.search-admin {
-  max-width: 55%;
+  .search-admin {
+    max-width: 55%;
+  }
 }
 
 .table-container {
