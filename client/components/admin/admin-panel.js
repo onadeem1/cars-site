@@ -85,6 +85,19 @@ const AdminPanel = props => {
       accessor: 'user.zip'
     },
     {
+      Header: 'Time Frame',
+      accessor: 'timeframe',
+      sortMethod: (a, b) => {
+        if (a === 'ASAP') a = '0'
+        if (b === 'ASAP') b = '0'
+        if (a === '1 year') a = '12'
+        if (b === '1 year') b = '12'
+        a = a.split(' ')[0]
+        b = b.split(' ')[0]
+        return a - b
+      }
+    },
+    {
       Header: 'Status',
       accessor: 'open',
       Cell: cellProps => {
