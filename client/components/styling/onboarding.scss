@@ -1,0 +1,62 @@
+@import './re-usable/variables.scss';
+
+.slide-container {
+  padding: 40px 0px 25px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.skip-link-container {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.skip-link {
+  color: $red;
+  text-decoration: underline;
+}
+
+.slick-dots li button::before {
+  font-size: 16px;
+  color: $grey;
+  opacity: 0.7;
+}
+
+.slick-dots li.slick-active button:before {
+  color: $red;
+}
+
+.slider-container {
+  padding-bottom: 50px;
+}
+
+.slide-container .slide-image {
+  display: inline-block;
+  margin-top: 40px;
+  max-height: 50vh;
+}
+
+.slide-text {
+  font-size: 28px;
+  font-weight: 700;
+  max-width: 750px;
+  margin: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.slick-slider {
+  margin-bottom: 30px;
+}
+.slide-btn-container {
+  max-width: 150px;
+  margin: auto;
+  padding-top: 10px;
+}
+
+*:focus {
+  outline-color: $grey !important;
+  outline-width: 1px !important;
+}
