@@ -26,8 +26,7 @@ const UserForm = props => {
         }}
         validationSchema={UserSchema}
         onSubmit={(values, actions) => {
-          props.finalSubmit(values, cars)
-          actions.resetForm()
+          props.finalSubmit(values, cars, actions)
         }}
       >
         {({ values, touched }) => {

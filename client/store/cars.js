@@ -19,16 +19,18 @@ export const removeCar = carKey => ({ type: REMOVE_CAR, carKey })
 export const resetState = () => ({ type: RESET_STATE })
 
 /* Thunk Creators */
-export const finalSubmit = (user, cars) => async dispatch => {
+export const finalSubmit = (user, cars, actions) => async dispatch => {
   let res
   try {
     res = await axios.post(`/api/cars`, { user, cars })
     if (res.status === 201) {
       dispatch(resetState())
+      actions.resetForm()
       history.push('/thanks')
     }
   } catch (error) {
     dispatch(fetchFailure(error))
+    actions.resetForm()
   }
 }
 
