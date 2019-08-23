@@ -40,6 +40,10 @@ const Car = db.define('car', {
   open: {
     type: BOOLEAN,
     defaultValue: true
+  },
+  timeframe: {
+    type: STRING,
+    allowNull: false
   }
 })
 
