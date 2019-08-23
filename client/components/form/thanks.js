@@ -18,7 +18,7 @@ const Thanks = () => (
       <div className="thanks-button-container">
         <button
           className="red-btn"
-          onClick={() => history.push('/')}
+          onClick={() => history.push('/cars')}
           type="button"
         >
           Thank You!

@@ -40,14 +40,13 @@ const Summary = props => {
         {props.cars &&
           props.cars.length < 3 && (
             <div className="summary-add-btn-container">
-              <Link to="/">
+              <Link to="/cars">
                 <button className="red-btn" type="button">
                   Add Another Vehicle
                 </button>
               </Link>
             </div>
           )}
-
         <div className="summary-red-btn-container">
           <Link to="/user">
             <button className="red-btn" type="button">
