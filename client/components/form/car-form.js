@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import React from 'react'
 import { connect } from 'react-redux'
 import { Formik, Form, Field } from 'formik'
@@ -8,7 +9,8 @@ import {
   calcBudget,
   calcYears,
   convertNumber,
-  generateKey
+  generateKey,
+  timeframeOptions
 } from './helper-files/helper-functions'
 import { CarSchema } from './helper-files/schemas'
 import '../styling/car-form.scss'
@@ -24,7 +26,8 @@ const CarForm = props => {
     maxYear,
     minBudget,
     maxBudget,
-    maxMileage
+    maxMileage,
+    timeframe
   } = props.selected
 
   return (
@@ -37,7 +40,8 @@ const CarForm = props => {
           maxYear: maxYear || '',
           minBudget: minBudget || '',
           maxBudget: maxBudget || '',
-          maxMileage: maxMileage || ''
+          maxMileage: maxMileage || '',
+          timeframe: timeframe || ''
         }}
         validationSchema={CarSchema}
         onSubmit={(values, actions) => {
@@ -225,6 +229,29 @@ const CarForm = props => {
                         ))}
                       </Field>
                     </div>
+                  </div>
+                </div>
+                <div className="timeframe-container">
+                  <div className="timeframe-text">
+                    <label htmlFor="timeframe">Time Frame to Purchase</label>
+                  </div>
+                  <div className="timeframe-select">
+                    <img
+                      className="arrow-year"
+                      src="http://cdn.onlinewebfonts.com/svg/img_295694.svg"
+                    />
+                    <Field
+                      className="form-control"
+                      component="select"
+                      name="timeframe"
+                    >
+                      <option disabled hidden key="start" value="" />
+                      {timeframeOptions.map(value => (
+                        <option key={value} value={value}>
+                          {value}
+                        </option>
+                      ))}
+                    </Field>
                   </div>
                 </div>
                 <div className="button-container">

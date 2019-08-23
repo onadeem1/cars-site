@@ -7,7 +7,8 @@ export const CarSchema = Yup.object().shape({
   maxYear: Yup.number().required('Required'),
   minBudget: Yup.number().required('Required'),
   maxBudget: Yup.number().required('Required'),
-  maxMileage: Yup.number().required('Required')
+  maxMileage: Yup.number().required('Required'),
+  timeframe: Yup.string().required('Required')
 })
 
 export const UserSchema = Yup.object().shape({

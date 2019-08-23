@@ -95,7 +95,8 @@ select:active {
 
 .mileage-container,
 .years-container,
-.budget-container {
+.budget-container,
+.timeframe-container {
   width: 75%;
   margin: 15px auto;
   display: flex;
@@ -118,12 +119,17 @@ select:active {
 
   .years-container,
   .budget-container,
-  .mileage-container {
+  .mileage-container,
+  .timeframe-container {
     width: 50%;
     margin: 15px auto;
     display: flex;
     flex-direction: column;
     padding: 10px;
+  }
+
+  .timeframe-select {
+    position: relative;
   }
 
   .mileage-text {
@@ -138,6 +144,10 @@ select:active {
   .zip-select {
     text-align: right;
   }
+}
+
+.timeframe-select {
+  position: relative;
 }
 
 .years-select {
