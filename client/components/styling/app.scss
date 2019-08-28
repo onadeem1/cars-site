@@ -34,3 +34,14 @@ body {
   display: flex;
   background-color: black;
 }
+
+@media screen and (max-width: 600px) {
+  .header-image {
+    margin: 0px auto;
+    width: 95%;
+  }
+
+  .header-image-container {
+    max-height: 60px;
+  }
+}
