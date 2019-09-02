@@ -71,7 +71,7 @@ select:active {
   right: 15px;
   transform: translateY(-50%);
   width: 15px;
-  opacity: 0.3;
+  opacity: 1;
   transition: 0.2s ease;
   z-index: -2;
 }
@@ -82,7 +82,7 @@ select:active {
   right: 6px;
   transform: translateY(-50%);
   width: 10px;
-  opacity: 0.3;
+  opacity: 1;
   transition: 0.2s ease;
   z-index: -2;
 }
