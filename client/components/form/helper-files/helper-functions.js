@@ -10,7 +10,7 @@ export const calcYears = (minYear = 1970, maxYear = 2019) => {
   for (i = minYear; i <= maxYear; i++) {
     arr.push(i)
   }
-  return arr
+  return arr.reverse()
 }
 
 export const calcBudget = (minBudget = 0, maxBudget = 100000) => {
