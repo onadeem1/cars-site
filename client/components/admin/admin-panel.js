@@ -98,6 +98,12 @@ const AdminPanel = props => {
       }
     },
     {
+      Header: 'Comments',
+      accessor: 'comments',
+      sortable: false,
+      minWidth: 150
+    },
+    {
       Header: 'Status',
       accessor: 'open',
       Cell: cellProps => {
