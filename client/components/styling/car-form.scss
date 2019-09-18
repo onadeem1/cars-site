@@ -183,3 +183,21 @@ select:active {
   width: 50%;
   min-width: 80px;
 }
+
+textarea.form-control,
+textarea.form-control:focus {
+  background: white;
+  padding: 10px;
+  min-height: 125px;
+  border: 0px;
+  resize: none;
+  border-radius: 5px;
+}
+
+.comments-text {
+  padding: 5px;
+}
+
+.comments-container {
+  padding: 10px;
+}

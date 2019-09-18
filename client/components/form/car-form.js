@@ -27,7 +27,8 @@ const CarForm = props => {
     minBudget,
     maxBudget,
     maxMileage,
-    timeframe
+    timeframe,
+    comments
   } = props.selected
 
   return (
@@ -41,7 +42,8 @@ const CarForm = props => {
           minBudget: minBudget || '',
           maxBudget: maxBudget || '',
           maxMileage: maxMileage || '',
-          timeframe: timeframe || ''
+          timeframe: timeframe || '',
+          comments: comments || ''
         }}
         validationSchema={CarSchema}
         onSubmit={(values, actions) => {
@@ -254,6 +256,21 @@ const CarForm = props => {
                     </Field>
                   </div>
                 </div>
+
+                <div className="comments-container">
+                  <div className="comments-text">
+                    <label htmlFor="comments">Additional Comments</label>
+                  </div>
+                  <div className="comments-box">
+                    <Field
+                      className="form-control"
+                      component="textarea"
+                      name="comments"
+                      placeholder="Specify trim, color, or anything else you're looking for!"
+                    />
+                  </div>
+                </div>
+
                 <div className="button-container">
                   <button className="red-btn" type="submit" disabled={disabled}>
                     Next
