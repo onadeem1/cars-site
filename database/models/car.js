@@ -1,4 +1,4 @@
-const { STRING, INTEGER, BOOLEAN, DATE } = require('sequelize')
+const { STRING, INTEGER, BOOLEAN, DATE, TEXT } = require('sequelize')
 const db = require('../db')
 const moment = require('moment')
 
@@ -44,6 +44,10 @@ const Car = db.define('car', {
   timeframe: {
     type: STRING,
     allowNull: false
+  },
+  comments: {
+    type: TEXT,
+    allowNull: true
   }
 })
 
